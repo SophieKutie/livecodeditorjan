@@ -37,12 +37,29 @@ class Container extends React.Component
 
         return (
             <div className="container">
-                <div className="color-picker-container">
+                {/* <div className="color-picker-container">
                     <input type="color"></input>
-                </div>
+                </div> */}
 
-                <div >
+                <div>
+                <ul className="nav">
+                <li >
                 <button className='go' onClick={this.go}>play</button> 
+                </li>
+
+                {/* Add onClick methods for stop, pause, refresh */}
+                <li >
+                <button className='go' >pause</button> 
+                </li>
+
+                <li >
+                <button className='go' >stop</button> 
+                </li>
+
+                <li >
+                <button className='go' >undo</button> 
+                </li >
+                </ul>
                 </div>
 
                 <div class="board-container"> 
