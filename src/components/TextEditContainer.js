@@ -1,18 +1,103 @@
+//https://github.com/ethanryan/textedit-app/blob/master/src/components/QuillEditor.js
+
+
+// import React, { Component, Fragment } from 'react'
+// import marked from 'marked'
+// import DOMPurify from 'dompurify'
+// import AceEditor from 'react-ace'
+
+// //import Navbar from './components/Navbar/Navbar'
+
+// import 'ace-builds/src-noconflict/mode-markdown'
+// import 'ace-builds/src-noconflict/theme-github'
+
+// import './styles.css'
+
+// class TextEditContainer extends Component {
+//     constructor(props) {
+//         super(props)
+//         this.state = {
+//             editorContent: '',
+//         }
+
+//         this.onChange = this.onChange.bind(this)
+//     }
+
+//     onChange = (value) => {
+//         localStorage.setItem('editorContent', value)
+//         this.setState({
+//             editorContent: value,
+//         })
+//     }
+
+//     shouldComponentUpdate(nextProps, nextState) {
+//         if (this.state.editorContent !== nextState.editorContent) {
+//             return true
+//         } else {
+//             return false
+//         }
+//     }
+
+//     componentDidMount() {
+//         this.setState({
+//             editorContent: localStorage.getItem('editorContent') || '',
+//         })
+//     }
+
+//     render() {
+//         const editorStyles = {
+//             height: '100vh',
+//             width: 'auto',
+//         }
+
+//         return (
+//             <Fragment>
+//                 {/* <Navbar /> */}
+//                 <div className="App">
+//                     <AceEditor
+//                         fontSize={12}
+//                         mode="markdown"
+//                         theme="github"
+//                         name="editor"
+//                         style={editorStyles}
+//                         value={this.state.editorContent}
+//                         onChange={this.onChange}
+//                         editorProps={{ $blockScrolling: true }}
+//                     />
+//                     <div
+//                         id="preview"
+//                         dangerouslySetInnerHTML={{
+//                             __html: DOMPurify.sanitize(
+//                                 marked(this.state.editorContent)
+//                             ),
+//                         }}
+//                     />
+//                 </div>
+//             </Fragment>
+//         )
+//     }
+// }
+
+// export default TextEditContainer
+
+
+
+
 import React, { Component } from "react";
 import AceEditor from 'react-ace';
 import ReactAce from 'react-ace-editor';
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai";
-import io from 'socket.io-client';
-import {Helmet} from "react-helmet";
-import socketIOClient from "socket.io-client";
+//import io from 'socket.io-client';
+
+//import socketIOClient from "socket.io-client";
 
 
 
 
 // import 'brace/mode/javascript';
 // import 'brace/theme/monokai';
-import './style.css';
+//import 'style.css' from './components/board/style.css';
 //const editor= ace.edit("ace-editor");
 //var text =editor.getSession().getValue();
   //textarea.val(text);
@@ -21,7 +106,7 @@ import './style.css';
 
 //const socket = io.connect("http://localhost:3000");
 
-class Board extends React.Component 
+class TextEditContainer extends React.Component 
 {    
     constructor(props){
         super(props);
@@ -33,8 +118,8 @@ class Board extends React.Component
       // https://www.npmjs.com/package/react-ace-editor  try this code for ReactAce
      // sending sockets
   send = () => {
-    const socket = socketIOClient("localhost:3000");
-    socket.emit('change color', this.state.value) // change 'red' to this.state.color
+   // const socket = socketIOClient("localhost:4000");
+   // socket.emit('change color', this.state.value) // change 'red' to this.state.color
   }
 
   // adding the function
@@ -76,15 +161,15 @@ class Board extends React.Component
         
           
   componentDidMount(){
-    const socket = socketIOClient("localhost:3000");
+   // const socket = socketIOClient("localhost:3000");
     setInterval(this.send(), 1000)
-    socket.on('change color', (col) => {
-     document.body.style.board = col
-    })
+    //socket.on('change color', (col) => {
+    // document.body.style.board = col
+    //})
   }
 
     render() {
-     const socket = socketIOClient("localhost:3000");
+     //const socket = socketIOClient("localhost:3000");
       // text =
       // '\n  "author": "musicode_hybrid team",\n  ' +
       //  '"version": """\n  "script": """\n  ';
@@ -93,13 +178,15 @@ class Board extends React.Component
       return ( 
    
       
-    <div>
+    <div >
+    {/* className = "editor" >  */}
       <form>
               <AceEditor 
                 mode="javascript" 
                 theme="monokai"
                 width="100"
                 fontSize="18px"
+                fontColor="white"
                 ref="ace"
                 name="editor"
                 setOptions={{
@@ -144,9 +231,9 @@ class Board extends React.Component
                
                  />
                  </form>
-                 <button onClick={() => this.send() }>Share </button>
+                 {/* <button onClick={() => this.send() }>Share </button>
                  <button  onClick={() => this.setEditor} h={
-                console.log("onChange")} >Value</button>
+                console.log("onChange")} >Value</button> */}
                  {/* <button id="red" onClick={() => this.setEditor('red')}>Red</button> */}
 
     </div>
@@ -160,9 +247,6 @@ class Board extends React.Component
       
      }        
     }
+ 
 
-            
-    
-
-
-export default Board
+    export default TextEditContainer

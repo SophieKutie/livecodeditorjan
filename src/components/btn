@@ -1,7 +1,0 @@
-import React from 'react';
-
-const Btn = ({ onClick }) => (
-  <button onClick={onClick} className="btn">Click</button>
-);
-
-export default Btn;

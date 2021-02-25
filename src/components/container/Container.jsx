@@ -65,9 +65,38 @@ class Container extends React.Component
                 <div class="board-container"> 
                 <Board></Board> 
                 </div>
+                
+            
+                {/* <div class="ace_scrollbar ace_scrollbar-v" 
+                style={{display: "visible",
+                    width: "22px",
+                    bottom: "0px"}}>
 
+                <div class="ace_scrollbar-inner" 
+                    style={{width: "22px",
+                    height: "105px"}}>
 
+                <div class="ace_scrollbar ace_scrollbar-h" 
+                style={{display: "visible", 
+                height: "22px", 
+                left: "43px", 
+                right: "0px"}}> */}
+
+              
+                {/* <div class="ace_scrollbar-inner" 
+                style={{height: "22px", 
+                width: "700px"}}>
+                 */}
+
+                <div>
+                    <ul id="messages"></ul>
+                    <form id="form" action="">
+                    <input id="input" autocomplete="off" /><button>Send</button>
+                    </form>
+                </div>
+        
             </div>
+
         )
 
     }
