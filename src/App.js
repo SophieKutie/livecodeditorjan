@@ -36,7 +36,7 @@ import "ace-builds/webpack-resolver";
 
 
 
-const socket = io.connect('http://localhost:4000')
+const socket = io.connect('https://livecodeditor.herokuapp.com/')
 
 function App() {
   const [state, setState] = useState({ editorText: '', name: '' })
